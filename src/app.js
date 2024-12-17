@@ -24,4 +24,12 @@ const getComments = (article_id) => {
     });
 };
 
-export { getArticles, getArticle, getComments };
+const upvoteArticle = (article_id) => {
+  return api.patch(`/articles/${article_id}`, { inc_votes: 1 });
+};
+
+const downvoteArticle = (article_id) => {
+  return api.patch(`/articles/${article_id}`, { inc_votes: -1 });
+};
+
+export { getArticles, getArticle, getComments, upvoteArticle, downvoteArticle };

@@ -110,14 +110,14 @@ a:focus {
   grid-template-columns: 60% 40%;
 }
 
-#article-column {
+/* #article-column {
   background-color: purple;
   height: auto;
-}
+} */
 
-#comments-column {
+/* #comments-column {
   background-color: white;
-}
+} */
 
 #comment-card {
   font-size: small;
@@ -127,6 +127,10 @@ a:focus {
   background-color: #dcbf85;
   margin-bottom: 10px;
   padding: 15px;
+}
+
+#article-buttons {
+  text-align: center;
 }
 
 @media screen and (max-width: 650px) {
