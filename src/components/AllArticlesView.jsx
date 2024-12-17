@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
-import ArticleList from "./ArticleList";
 import { getArticles } from "../app";
+import Loading from "./Loading";
+import ArticleList from "./ArticleList";
 
 const AllArticlesView = () => {
   const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getArticles().then((articles) => {
-      setArticles(articles);
+    setIsLoading(true);
+    getArticles().then((fetchedArticles) => {
+      setArticles(fetchedArticles);
+      setIsLoading(false);
     });
   }, []);
 
   return (
     <>
-      <ArticleList articles={articles} />
+      <h2>Articles:</h2>
+      {isLoading ? <Loading /> : <ArticleList articles={articles} />}
     </>
   );
 };
