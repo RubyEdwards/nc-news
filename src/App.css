@@ -96,11 +96,37 @@ a:focus {
   margin: auto;
   margin-bottom: 10px;
   padding: 30px;
-  width: 70%;
+  width: 80%;
+  height: max-content;
+  /* height: inherit; */
 }
 
 #article img {
   width: 100%;
+}
+
+#single-article-view {
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+
+#article-column {
+  background-color: purple;
+  height: auto;
+}
+
+#comments-column {
+  background-color: white;
+}
+
+#comment-card {
+  font-size: small;
+  border: 2px #8b635c solid;
+  border-radius: 20px;
+  text-align: left;
+  background-color: #dcbf85;
+  margin-bottom: 10px;
+  padding: 15px;
 }
 
 @media screen and (max-width: 650px) {

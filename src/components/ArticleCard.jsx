@@ -6,12 +6,14 @@ const ArticleCard = ({ article }) => {
     article;
 
   const date = new Date(created_at);
-  const min = date.getMinutes();
-  const hr = date.getHours();
+  let min = date.getMinutes();
+  let hr = date.getHours();
   const dd = date.getDate();
   const yy = date.getFullYear();
   const mm = date.getMonth() + 1;
-  const dateStr = min + ":" + hr + " " + dd + "/" + mm + "/" + yy;
+  min = min < 10 ? `0${min}` : min;
+  hr = hr < 10 ? `0${hr}` : hr;
+  const dateStr = `${hr}:${min} ${dd}/${mm}/${yy}`;
 
   const handleClick = () => {
     navigate(`/articles/${article_id}`);

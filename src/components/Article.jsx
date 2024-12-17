@@ -4,7 +4,6 @@ const Article = ({ article }) => {
   const {
     title,
     author,
-    article_id,
     body,
     topic,
     created_at,
@@ -13,19 +12,15 @@ const Article = ({ article }) => {
     comment_count,
   } = article;
 
-  const navigate = useNavigate();
-
   const date = new Date(created_at);
-  const min = date.getMinutes();
-  const hr = date.getHours();
+  let min = date.getMinutes();
+  let hr = date.getHours();
   const dd = date.getDate();
   const yy = date.getFullYear();
   const mm = date.getMonth() + 1;
-  const dateStr = `${min}:${hr} ${dd}/${mm}/${yy}`;
-
-  const handleClick = () => {
-    navigate(-1);
-  };
+  min = min < 10 ? `0${min}` : min;
+  hr = hr < 10 ? `0${hr}` : hr;
+  const dateStr = `${hr}:${min} ${dd}/${mm}/${yy}`;
 
   return (
     <>
@@ -41,9 +36,6 @@ const Article = ({ article }) => {
           <li>{comment_count} comments</li>
         </ul>
       </section>
-      <button type="button" onClick={handleClick}>
-        BACK
-      </button>
     </>
   );
 };
