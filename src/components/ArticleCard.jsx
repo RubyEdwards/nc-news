@@ -1,15 +1,35 @@
+import { useNavigate } from "react-router-dom";
+
 const ArticleCard = ({ article }) => {
-  const { title, author, topic, created_at, votes, comment_count } = article;
+  const navigate = useNavigate();
+  const { author, title, article_id, topic, created_at, votes, comment_count } =
+    article;
+
+  const date = new Date(created_at);
+  const min = date.getMinutes();
+  const hr = date.getHours();
+  const dd = date.getDate();
+  const yy = date.getFullYear();
+  const mm = date.getMonth() + 1;
+  const dateStr = min + ":" + hr + " " + dd + "/" + mm + "/" + yy;
+
+  const handleClick = () => {
+    navigate(`/articles/${article_id}`);
+  };
+
   return (
     <div id="article-card">
       <h3>{title}</h3>
       <p id="author">by {author}</p>
       <ul id="article-info">
         <li>Topic: {topic}</li>
-        <li>Posted: {created_at}</li>
-        <li>Votes: {votes}</li>
-        <li>Comments: {comment_count}</li>
+        <li>Posted at {dateStr}</li>
+        <li>{votes} votes</li>
+        <li>{comment_count} comments</li>
       </ul>
+      <button type="button" onClick={handleClick}>
+        READ THIS ARTICLE
+      </button>
     </div>
   );
 };
