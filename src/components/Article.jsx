@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { downvoteArticle, upvoteArticle } from "../app";
 
 const Article = ({ article }) => {
   const {
@@ -10,17 +11,48 @@ const Article = ({ article }) => {
     votes,
     article_img_url,
     comment_count,
+    article_id,
   } = article;
+  const [userVotes, setUserVotes] = useState(0);
+  const [error, setError] = useState(null);
 
-  const date = new Date(created_at);
-  let min = date.getMinutes();
-  let hr = date.getHours();
-  const dd = date.getDate();
-  const yy = date.getFullYear();
-  const mm = date.getMonth() + 1;
-  min = min < 10 ? `0${min}` : min;
-  hr = hr < 10 ? `0${hr}` : hr;
-  const dateStr = `${hr}:${min} ${dd}/${mm}/${yy}`;
+  const upvote = () => {
+    setUserVotes((currUserVotes) => {
+      return currUserVotes + 1;
+    });
+    setError(null);
+    upvoteArticle(article_id).catch((err) => {
+      setUserVotes((currUserVotes) => {
+        setError("Couldn't change vote at this time, please try again later!");
+        return currUserVotes - 1;
+      });
+    });
+  };
+
+  const downvote = () => {
+    setUserVotes((currUserVotes) => {
+      return currUserVotes - 1;
+    });
+    setError(null);
+    downvoteArticle(article_id).catch((err) => {
+      setUserVotes((currUserVotes) => {
+        setError("Couldn't change vote at this time, please try again later!");
+        return currUserVotes + 1;
+      });
+    });
+  };
+
+  const formatDate = () => {
+    const date = new Date(created_at);
+    let min = date.getMinutes();
+    let hr = date.getHours();
+    const dd = date.getDate();
+    const yy = date.getFullYear();
+    const mm = date.getMonth() + 1;
+    min = min < 10 ? `0${min}` : min;
+    hr = hr < 10 ? `0${hr}` : hr;
+    return `${hr}:${min} ${dd}/${mm}/${yy}`;
+  };
 
   return (
     <>
@@ -31,10 +63,22 @@ const Article = ({ article }) => {
         <p>{body}</p>
         <ul className="article-info">
           <li>Topic: {topic}</li>
-          <li>Posted at {dateStr}</li>
-          <li>{votes} votes</li>
+          <li>Posted at {formatDate()}</li>
+          <li>{votes + userVotes} votes</li>
           <li>{comment_count} comments</li>
         </ul>
+        <div id="article-buttons">
+          {error ? <p>{error}</p> : null}
+          <p id="article-vote">
+            Vote:
+            <button type="button" onClick={upvote}>
+              +
+            </button>
+            <button type="button" onClick={downvote}>
+              -
+            </button>
+          </p>
+        </div>
       </section>
     </>
   );
