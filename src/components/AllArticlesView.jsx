@@ -15,12 +15,16 @@ const AllArticlesView = () => {
     });
   }, []);
 
-  return (
-    <>
-      <h2>Articles:</h2>
-      {isLoading ? <Loading /> : <ArticleList articles={articles} />}
-    </>
-  );
+  if (isLoading) {
+    return <Loading />;
+  } else {
+    return (
+      <>
+        <h2>Articles:</h2>
+        <ArticleList articles={articles} />
+      </>
+    );
+  }
 };
 
 export default AllArticlesView;
