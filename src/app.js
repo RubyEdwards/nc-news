@@ -24,12 +24,18 @@ const getComments = (article_id) => {
     });
 };
 
-const upvoteArticle = (article_id) => {
-  return api.patch(`/articles/${article_id}`, { inc_votes: 1 });
+const voteOnArticle = (name, article_id) => {
+  let vote = 1;
+  if (name === "downvote") vote = -1;
+  return api.patch(`/articles/${article_id}`, { inc_votes: vote });
 };
 
-const downvoteArticle = (article_id) => {
-  return api.patch(`/articles/${article_id}`, { inc_votes: -1 });
+const postComment = (article_id, newComment) => {
+  return api
+    .post(`/articles/${article_id}/comments`, newComment)
+    .then(({ data: { comment } }) => {
+      return comment;
+    });
 };
 
-export { getArticles, getArticle, getComments, upvoteArticle, downvoteArticle };
+export { getArticles, getArticle, getComments, postComment, voteOnArticle };

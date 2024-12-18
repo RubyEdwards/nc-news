@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { downvoteArticle, upvoteArticle } from "../app";
+import { voteOnArticle } from "../app";
+import { formatDate } from "../utils";
 
 const Article = ({ article }) => {
   const {
@@ -13,45 +14,23 @@ const Article = ({ article }) => {
     comment_count,
     article_id,
   } = article;
+
   const [userVotes, setUserVotes] = useState(0);
   const [error, setError] = useState(null);
 
-  const upvote = () => {
+  const handleClick = (e) => {
+    let vote = 1;
+    const { name } = e.target;
+    if (name === "downvote") vote = -1;
     setUserVotes((currUserVotes) => {
-      return currUserVotes + 1;
+      return currUserVotes + vote;
     });
-    setError(null);
-    upvoteArticle(article_id).catch((err) => {
+    voteOnArticle(name, article_id).catch((err) => {
       setUserVotes((currUserVotes) => {
-        setError("Couldn't change vote at this time, please try again later!");
-        return currUserVotes - 1;
+        setError("Vote not added, please try again later");
+        return currUserVotes - vote;
       });
     });
-  };
-
-  const downvote = () => {
-    setUserVotes((currUserVotes) => {
-      return currUserVotes - 1;
-    });
-    setError(null);
-    downvoteArticle(article_id).catch((err) => {
-      setUserVotes((currUserVotes) => {
-        setError("Couldn't change vote at this time, please try again later!");
-        return currUserVotes + 1;
-      });
-    });
-  };
-
-  const formatDate = () => {
-    const date = new Date(created_at);
-    let min = date.getMinutes();
-    let hr = date.getHours();
-    const dd = date.getDate();
-    const yy = date.getFullYear();
-    const mm = date.getMonth() + 1;
-    min = min < 10 ? `0${min}` : min;
-    hr = hr < 10 ? `0${hr}` : hr;
-    return `${hr}:${min} ${dd}/${mm}/${yy}`;
   };
 
   return (
@@ -63,7 +42,7 @@ const Article = ({ article }) => {
         <p>{body}</p>
         <ul className="article-info">
           <li>Topic: {topic}</li>
-          <li>Posted at {formatDate()}</li>
+          <li>Posted at {formatDate(created_at)}</li>
           <li>{votes + userVotes} votes</li>
           <li>{comment_count} comments</li>
         </ul>
@@ -71,10 +50,10 @@ const Article = ({ article }) => {
           {error ? <p>{error}</p> : null}
           <p id="article-vote">
             Vote:
-            <button type="button" onClick={upvote}>
+            <button type="button" onClick={handleClick} name="upvote">
               +
             </button>
-            <button type="button" onClick={downvote}>
+            <button type="button" onClick={handleClick} name="downvote">
               -
             </button>
           </p>
