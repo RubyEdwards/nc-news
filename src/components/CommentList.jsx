@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import CommentCard from "./CommentCard";
 import { getComments } from "../app";
+import CommentForm from "../CommentForm";
 
 const CommentList = ({ article_id }) => {
   const [comments, setComments] = useState([]);
@@ -14,19 +15,52 @@ const CommentList = ({ article_id }) => {
   }, []);
 
   if (isLoading) {
-    return <p>Loading comments...</p>;
-  } else if (!comments.length) {
-    return <p>No comments yet</p>;
-  } else {
     return (
+      <>
+        <CommentForm
+          article_id={article_id}
+          comments={comments}
+          setComments={setComments}
+        />
+        <p>Loading comments...</p>
+      </>
+    );
+  }
+
+  if (!comments.length) {
+    return (
+      <>
+        <CommentForm
+          article_id={article_id}
+          comments={comments}
+          setComments={setComments}
+        />
+        <p>No comments yet</p>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <CommentForm
+        article_id={article_id}
+        comments={comments}
+        setComments={setComments}
+      />
       <section id="comment-list">
         <h4>Comments:</h4>
         {comments.map((comment) => {
-          return <CommentCard key={comment.comment_id} comment={comment} />;
+          return (
+            <CommentCard
+              key={comment.comment_id}
+              comment={comment}
+              setComments={setComments}
+            />
+          );
         })}
       </section>
-    );
-  }
+    </>
+  );
 };
 
 export default CommentList;
