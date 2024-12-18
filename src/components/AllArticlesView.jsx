@@ -17,14 +17,14 @@ const AllArticlesView = () => {
 
   if (isLoading) {
     return <Loading />;
-  } else {
-    return (
-      <>
-        <h2>Articles:</h2>
-        <ArticleList articles={articles} />
-      </>
-    );
   }
+
+  return (
+    <>
+      <h2>Articles:</h2>
+      <ArticleList articles={articles} />
+    </>
+  );
 };
 
 export default AllArticlesView;
