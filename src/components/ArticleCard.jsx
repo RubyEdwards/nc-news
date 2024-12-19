@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { formatDate } from "../utils";
-
+import { formatDate } from "../utils/formatDate";
 const ArticleCard = ({ article }) => {
   const { author, title, article_id, topic, created_at, votes, comment_count } =
     article;
@@ -15,7 +14,11 @@ const ArticleCard = ({ article }) => {
         <li>{votes} votes</li>
         <li>{comment_count} comments</li>
       </ul>
-      <Link to={`/articles/${article_id}`}>READ THIS ARTICLE</Link>
+      <div id="center-article-button">
+        <Link id="article-link" to={`/articles/${article_id}`}>
+          READ THIS ARTICLE
+        </Link>
+      </div>
     </div>
   );
 };

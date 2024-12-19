@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { voteOnArticle } from "../app";
-import { formatDate } from "../utils";
+import { formatDate } from "../utils/formatDate";
 
 const Article = ({ article }) => {
   const {
