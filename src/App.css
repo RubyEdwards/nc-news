@@ -46,8 +46,9 @@ a:hover {
 }
 
 a:focus {
-  color: #f5eb7d;
-  background-color: black;
+  color: black;
+  background-color: #f5eb7d;
+  border: 2px solid black;
 }
 
 #footer {
@@ -127,8 +128,22 @@ a:focus {
   text-align: left;
 }
 
-#article-buttons {
+#center-article-button {
+  margin: auto;
   text-align: center;
+}
+
+#article-link {
+  background-color: black;
+  padding: 5px;
+  width: 50%;
+  border-radius: 20px;
+}
+
+#article-link:hover {
+  color: black;
+  background-color: #f5eb7d;
+  border: 2px solid #60594d;
 }
 
 @media screen and (max-width: 650px) {
