@@ -38,4 +38,15 @@ const postComment = (article_id, newComment) => {
     });
 };
 
-export { getArticles, getArticle, getComments, postComment, voteOnArticle };
+const deleteComment = (comment_id) => {
+  return api.delete(`/comments/${comment_id}`);
+};
+
+export {
+  getArticles,
+  getArticle,
+  getComments,
+  postComment,
+  voteOnArticle,
+  deleteComment,
+};
