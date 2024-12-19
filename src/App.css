@@ -32,7 +32,9 @@
   min-width: 100px;
 }
 
-a {
+a,
+#topic-button {
+  background-color: #60594d;
   border-radius: 20px;
   color: #f5eb7d;
   padding: 5px;
@@ -40,15 +42,29 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+a:hover,
+#topic-button:hover {
   color: black;
   background-color: #f5eb7d;
 }
 
-a:focus {
+a:focus,
+#topic-button:focus {
   color: black;
   background-color: #f5eb7d;
   border: 2px solid black;
+}
+
+#topic-menu {
+  background-color: #8b635c;
+  border-radius: 20px;
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-items {
+  margin: 2px;
 }
 
 #footer {
