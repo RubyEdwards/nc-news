@@ -4,8 +4,12 @@ const api = axios.create({
   baseURL: "https://ruby-edwards-northcoders-news.onrender.com/api",
 });
 
-const getArticles = () => {
-  return api.get("/articles").then(({ data: { articles } }) => {
+const getArticles = (topic) => {
+  let url = `/articles`;
+  if (topic) {
+    url += `?topic=${topic}`;
+  }
+  return api.get(url).then(({ data: { articles } }) => {
     return articles;
   });
 };
@@ -42,6 +46,12 @@ const deleteComment = (comment_id) => {
   return api.delete(`/comments/${comment_id}`);
 };
 
+const getTopics = () => {
+  return api.get("/topics").then(({ data: { topics } }) => {
+    return topics;
+  });
+};
+
 export {
   getArticles,
   getArticle,
@@ -49,4 +59,5 @@ export {
   postComment,
   voteOnArticle,
   deleteComment,
+  getTopics,
 };
