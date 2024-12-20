@@ -124,6 +124,7 @@ a:focus,
 #single-article-view {
   display: grid;
   grid-template-columns: 60% 40%;
+  margin-top: 20px;
 }
 
 #comments-column {
@@ -160,6 +161,21 @@ a:focus,
   color: black;
   background-color: #f5eb7d;
   border: 2px solid #60594d;
+}
+
+#sorting {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#sort-blocks {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
 }
 
 @media screen and (max-width: 650px) {
