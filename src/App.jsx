@@ -12,6 +12,7 @@ function App() {
       <Header />
       <Nav />
       <Routes>
+        <Route path="/" element={<AllArticlesView />} />
         <Route path="/articles" element={<AllArticlesView />} />
         <Route path="/articles/:article_id" element={<SingleArticleView />} />
       </Routes>
