@@ -29,18 +29,15 @@ const SingleArticleView = () => {
   }
 
   return (
-    <>
-      <p>You are viewing article {article_id}!</p>
-      <section id="single-article-view">
-        <div id="article-column">
-          <Article article={article} />
-          <Link to="/articles">BACK</Link>
-        </div>
-        <div id="comments-column">
-          <CommentList article_id={article_id} />
-        </div>
-      </section>
-    </>
+    <section id="single-article-view">
+      <div id="article-column">
+        <Article article={article} />
+        <Link to="/articles">BACK</Link>
+      </div>
+      <div id="comments-column">
+        <CommentList article_id={article_id} />
+      </div>
+    </section>
   );
 };
 

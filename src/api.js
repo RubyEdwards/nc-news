@@ -4,10 +4,12 @@ const api = axios.create({
   baseURL: "https://ruby-edwards-northcoders-news.onrender.com/api",
 });
 
-const getArticles = (topic) => {
+const getArticles = (topic, sortBy, order) => {
   let url = `/articles`;
   if (topic) {
     url += `?topic=${topic}`;
+  } else {
+    url += `?sort_by=${sortBy}&order=${order}`;
   }
   return api.get(url).then(({ data: { articles } }) => {
     return articles;
