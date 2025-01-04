@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { formatDate } from "../utils/formatDate";
-import { deleteComment } from "../app";
+import { deleteComment } from "../api";
 const CommentCard = ({ comment, comments, setComments, user }) => {
   const { comment_id, body, author, votes, created_at } = comment;
   const [isCorrectUser, setIsCorrectUser] = useState(false);

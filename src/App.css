@@ -1,24 +1,18 @@
-:root {
-  background-color: #93a29b;
-}
-
 #root {
+  /* background-color: #93a29b; */
+  background-color: #3f0d12;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Verdana";
   text-align: center;
   min-width: 420px;
+  color: #f1f0cc;
 }
 
-#header {
-  background-color: black;
-  border-radius: 20px;
-  color: #f5eb7d;
-  padding: 5px;
-  margin: 10px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+.window {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 #nav-bar {
@@ -69,31 +63,26 @@ a:focus,
 
 #footer {
   font-size: small;
-  height: 30px;
   background-color: #8b635c;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
   margin-bottom: 0px;
-  padding-top: 15px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 #article-list {
-  width: 75%;
+  width: 95%;
   margin: auto;
+  margin-top: 1rem;
 }
 
 #article-card {
-  border: 1px #8b635c dashed;
-  border-radius: 20px;
-  text-align: left;
-  background-color: #dcbf85;
+  height: 100%;
+  width: 20rem;
   margin: auto;
-  margin-bottom: 10px;
-  padding: 15px;
-  padding-left: 30px;
-  padding-bottom: 30px;
-  width: 70%;
+  border: 1px black dashed;
+  color: #3f0d12;
+  text-align: left;
+  background-color: #f1f0cc;
 }
 
 #author {
@@ -110,6 +99,7 @@ a:focus,
   border: 1px #8b635c dashed;
   border-radius: 20px;
   background-color: #dcbf85;
+  color: #3f0d12;
   margin: auto;
   margin-bottom: 10px;
   padding: 30px;
@@ -119,16 +109,17 @@ a:focus,
 
 #article img {
   width: 100%;
+  padding: 0.5rem;
 }
 
 #single-article-view {
   display: grid;
   grid-template-columns: 60% 40%;
-  margin-top: 20px;
+  margin-top: 2rem;
 }
 
 #comments-column {
-  margin-right: 10px;
+  margin-right: 1rem;
 }
 
 #comment-card {
@@ -137,12 +128,17 @@ a:focus,
   border-radius: 20px;
   text-align: left;
   background-color: #dcbf85;
+  color: black;
   margin-bottom: 10px;
   padding: 15px;
 }
 
 #comment-form {
   text-align: left;
+}
+
+#comment-list {
+  margin-top: 2rem;
 }
 
 #center-article-button {
@@ -178,10 +174,16 @@ a:focus,
   margin-left: 20px;
 }
 
-@media screen and (max-width: 650px) {
-  #nav-bar {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
+@media screen and (max-width: 992px) {
+  #single-article-view {
+    display: grid;
+    grid-template-columns: 100%;
+    margin-top: 20px;
+  }
+  #comments-column {
+    margin-left: 1rem;
+  }
+  #article-column {
+    margin-bottom: 1rem;
   }
 }

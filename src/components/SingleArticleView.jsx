@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getArticle } from "../app";
+import { getArticle } from "../api";
 import Loading from "./Loading";
 import Article from "./Article";
 import CommentList from "./CommentList";
