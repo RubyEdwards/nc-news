@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import CommentCard from "./CommentCard";
-import { getComments } from "../app";
+import { getComments } from "../api";
 import CommentForm from "./CommentForm";
 
 const CommentList = ({ article_id }) => {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getArticles } from "../app";
+import { getArticles } from "../api";
 import Loading from "./Loading";
 import ArticleList from "./ArticleList";
 import { useSearchParams } from "react-router-dom";
@@ -53,7 +53,7 @@ const AllArticlesView = () => {
   }
 
   return (
-    <>
+    <section className="window">
       <h2>Articles{topicQuery ? ` for ${topicQuery}` : null}:</h2>
       {topicQuery ? null : (
         <>
@@ -99,7 +99,7 @@ const AllArticlesView = () => {
       )}
 
       <ArticleList articles={articles} />
-    </>
+    </section>
   );
 };
 

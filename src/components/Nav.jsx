@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getTopics } from "../app";
+import { getTopics } from "../api";
 import { Dropdown } from "react-bootstrap";
 
 const Nav = () => {

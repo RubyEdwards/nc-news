@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { voteOnArticle } from "../app";
+import { voteOnArticle } from "../api";
 import { formatDate } from "../utils/formatDate";
 
 const Article = ({ article }) => {
