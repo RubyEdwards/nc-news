@@ -15,7 +15,7 @@ const ArticleCard = ({ article }) => {
   } = article;
 
   return (
-    <Card id="article-card">
+    <Card id="card">
       <Card.Img variant="top" src={article_img_url} />
       <Card.Body>
         <Card.Title>
